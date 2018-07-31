@@ -20,6 +20,6 @@ public class MainActivity extends AppCompatActivity {
         String[] options = {"--light", "--no-ipc"};
         Parity parity = new Parity(options);
 
-        Log.d("FETHER", parity.rpcQuery("eth_coinbase").toString());
+        Log.d("FETHER", parity.rpcQuery("eth_coinbase"));
     }
 }
