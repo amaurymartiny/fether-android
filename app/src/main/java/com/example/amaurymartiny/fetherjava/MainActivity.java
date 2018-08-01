@@ -16,8 +16,10 @@ public class MainActivity extends AppCompatActivity {
         TextView tv = (TextView) findViewById(R.id.sample_text);
         tv.setText("HELLO THERE");
 
+        Log.d("CACHE_DIR", getCacheDir().getAbsolutePath());
+
         // Run parity
-        String[] options = {"--light", "--no-ipc"};
+        String[] options = {"--base-path=" + getCacheDir().getAbsolutePath(), "--light", "--no-ipc"};
         Parity parity = new Parity(options);
 
         Log.d("FETHER", parity.rpcQuery("eth_coinbase"));
