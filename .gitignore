@@ -1,3 +1,5 @@
+# Gitignore
+
 *.iml
 .gradle
 /local.properties
