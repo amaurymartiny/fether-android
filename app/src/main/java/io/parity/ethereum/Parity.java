@@ -16,7 +16,7 @@ public class Parity {
         return rpcQueryNative(inner, query);
     }
 
-    protected void finalize​() {
+    protected void finalize() {
         destroy(inner);
     }
 

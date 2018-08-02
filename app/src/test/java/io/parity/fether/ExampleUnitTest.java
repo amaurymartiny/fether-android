@@ -1,4 +1,4 @@
-package com.example.amaurymartiny.fetherjava;
+package io.parity.fether;
 
 import org.junit.Test;
 
