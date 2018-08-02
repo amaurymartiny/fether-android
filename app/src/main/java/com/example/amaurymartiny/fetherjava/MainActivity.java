@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 
+import io.parity.ethereum.Parity;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -14,13 +16,14 @@ public class MainActivity extends AppCompatActivity {
 
         // Example of a call to a native method
         TextView tv = (TextView) findViewById(R.id.sample_text);
-        tv.setText("HELLO THERE");
+
 
         Log.d("APP_DIR", getFilesDir().getAbsolutePath());
 
         // Run parity
         String[] options = {
-                "--base-path=/data/user/0/com.example.amaurymartiny.fetherjava/cache",
+                "--base-path",
+                getFilesDir().getAbsolutePath(),
                 "--light",
                 "--no-hardware-wallets",
                 "--no-ipc",
@@ -30,6 +33,9 @@ public class MainActivity extends AppCompatActivity {
         };
         Parity parity = new Parity(options);
 
-        Log.d("FETHER", parity.rpcQuery("eth_coinbase"));
+        Log.d("FETHER", parity.rpcQuery("{\"method\":\"eth_syncing\",\"params\":[],\"id\":1,\"jsonrpc\":\"2.0\"}"));
+        String balanceResponse = parity.rpcQuery("{\"method\":\"eth_getBalance\",\"params\":[\"0x407d73d8a49eeb85d32cf465507dd71d507100c1\"],\"id\":2,\"jsonrpc\":\"2.0\"}");
+
+        tv.setText("Balance of my account:" + balanceResponse);
     }
 }

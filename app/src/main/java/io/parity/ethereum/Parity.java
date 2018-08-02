@@ -1,4 +1,4 @@
-package com.example.amaurymartiny.fetherjava;
+package io.parity.ethereum;
 
 public class Parity {
 
